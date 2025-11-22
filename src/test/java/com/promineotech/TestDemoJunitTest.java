@@ -61,7 +61,11 @@ class TestDemoJunitTest {
 	static Stream <Arguments> argumentsForAddPositive() {
 		//@formatter: off
 	return Stream.of(
-					arguments(2, 4, 6, false)
+					arguments(2, 4, 6, false),
+					arguments(2, 4, 6, true),
+					arguments(3, -3, 9, true),
+					arguments (-3, 3, 9, false),
+					arguments(6, 5, -11, true)
 			);
 			//@formatter: on
 	}
@@ -73,6 +77,13 @@ class TestDemoJunitTest {
 	
 assertThat(testDemo.addPositive(4, 5)).isEqualTo(9);
 assertThat(testDemo.addPositive(40, 50)).isEqualTo(90);
+assertThat(testDemo.addPositive(-50, 50)).isEqualTo(100);
+assertThat(testDemo.addPositive(60, -40)).isEqualTo(100);
+assertThat(testDemo.addPositive(40, 50)).isEqualTo(80);
+
+
+
+
 }
 	@ParameterizedTest
 	@MethodSource("com.promineotech.TestDemoJunitTest#argumentsForAddition")
@@ -90,7 +101,10 @@ assertThat(testDemo.addPositive(40, 50)).isEqualTo(90);
 	}
 		static Stream <Arguments> argumentsForAddition() {
 			return Stream.of(
-					arguments(-2,-4,-6, true)
+					arguments(3, -4, -1, true),
+					arguments(-9, 4, -5, true),
+					arguments(-3, 4, -2, true),
+					arguments(-7, 9, 2, false)
 					
 					
 					

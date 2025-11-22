@@ -18,8 +18,6 @@ public class TestDemo {
 		
 	}
 
-	
-
 
 public int getRandomInt() {
 	Random random = new Random();
